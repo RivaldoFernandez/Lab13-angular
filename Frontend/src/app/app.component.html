@@ -1,0 +1,14 @@
+<div class="container mt-4 p-4 shadow-sm bg-light rounded">
+    <h2 class="text-center text-primary">{{ title }}</h2>
+
+    <app-notification *ngIf="notification" [message]="notification.message" [type]="notification.type"></app-notification>
+  
+    <app-item-form [item]="currentItem" (formSubmit)="currentItem._id ? updateItem(currentItem._id, $event) : createItem($event)"></app-item-form>
+  
+    <hr>
+    <app-search-bar (search)="searchTerm = $event"></app-search-bar>
+  
+    <app-item-list [items]="filteredItems" (edit)="editItem($event)" (delete)="deleteItem($event)"></app-item-list>
+  
+    <app-delete-confirmation [showModal]="showModal" (confirmDelete)="confirmDelete()" (cancelDelete)="cancelDelete()"></app-delete-confirmation>
+  </div>

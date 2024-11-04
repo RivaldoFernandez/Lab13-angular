@@ -1,0 +1,19 @@
+<div *ngIf="showModal" class="modal fade show" tabindex="-1" style="display: block; background: rgba(0, 0, 0, 0.7);">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-0 rounded-3 shadow-lg">
+      <div class="modal-header bg-danger text-white">
+        <h5 class="modal-title">Confirmación de Eliminación</h5>
+        <button type="button" class="btn-close btn-close-white" aria-label="Close" (click)="onCancelDelete()"></button>
+      </div>
+      <div class="modal-body text-center">
+        <h6 class="mb-3">¿Estás seguro de que deseas eliminar este elemento?</h6>
+        <p class="text-muted">Esta acción no se puede deshacer.</p>
+        <img src="../../assets/image.png" alt="Warning" class="mb-3" style="width: 200px; height: 200px;">
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <button class="btn btn-danger me-2" (click)="onDeleteConfirmed()">Eliminar</button>
+        <button class="btn btn-outline-secondary" (click)="onCancelDelete()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>

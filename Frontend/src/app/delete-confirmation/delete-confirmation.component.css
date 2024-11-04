@@ -1,0 +1,17 @@
+.modal-content {
+  border-radius: 1rem;
+}
+
+.modal-header {
+  border-bottom: 2px solid #dc3545; /* Líneas más definidas en el encabezado */
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  border: none; /* Para eliminar el borde del botón */
+}
+
+.btn-outline-secondary {
+  color: #6c757d;
+  border-color: #6c757d; /* Para hacer que el borde del botón sea más sutil */
+}

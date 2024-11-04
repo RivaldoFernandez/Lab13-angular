@@ -1,0 +1,40 @@
+<form (ngSubmit)="onSubmit()" #itemForm="ngForm" class="needs-validation" novalidate>
+  <div *ngIf="alertMessage" [ngClass]="alertClass" class="alert mt-3">{{ alertMessage }}</div>
+  
+  <div class="form-group">
+    <label for="name">Nombre</label>
+    <input type="text" class="form-control" id="name" [(ngModel)]="item.name" name="name" required placeholder="Ingrese el nombre de la película">
+    <div *ngIf="formSubmitted && !item.name" class="invalid-feedback">El nombre es obligatorio.</div>
+  </div>
+  
+  <div class="form-group">
+    <label for="description">Descripción</label>
+    <textarea class="form-control" id="description" [(ngModel)]="item.description" name="description" required placeholder="Ingrese una breve descripción de la película"></textarea>
+    <div *ngIf="formSubmitted && !item.description" class="invalid-feedback">La descripción es obligatoria.</div>
+  </div>
+  
+  <div class="form-group">
+    <label for="genre">Género</label>
+    <input type="text" class="form-control" id="genre" [(ngModel)]="item.genre" name="genre" required placeholder="Ingrese el género (ej. acción, comedia)">
+    <div *ngIf="formSubmitted && !item.genre" class="invalid-feedback">El género es obligatorio.</div>
+  </div>
+  
+  <div class="form-group">
+    <label for="releaseDate">Fecha de Lanzamiento</label>
+    <input type="date" class="form-control" id="releaseDate" [(ngModel)]="item.releaseDate" name="releaseDate" required>
+    <div *ngIf="formSubmitted && !item.releaseDate" class="invalid-feedback">La fecha de lanzamiento es obligatoria.</div>
+  </div>
+  
+  <div class="form-group">
+    <label for="rating">Calificación</label>
+    <input type="number" class="form-control" id="rating" [(ngModel)]="item.rating" name="rating" min="0" max="10" placeholder="Ingrese una calificación de 0 a 10">
+    <div *ngIf="formSubmitted && (item.rating < 0 || item.rating > 10)" class="invalid-feedback">La calificación debe estar entre 0 y 10.</div>
+  </div>
+  
+  <div class="form-group">
+    <label for="imageUrl">URL de la Imagen</label>
+    <input type="text" class="form-control" id="imageUrl" [(ngModel)]="item.imageUrl" name="imageUrl" placeholder="Ingrese la URL de la imagen (opcional)">
+  </div>
+  
+  <button type="submit" class="btn btn-primary mt-2 w-100">{{item._id ? 'Actualizar' : 'Agregar'}} Item</button>
+</form>

@@ -1,0 +1,41 @@
+<div class="container mt-4 p-4 shadow-sm bg-light rounded">
+    <h2 class="text-center text-primary">Items</h2>
+
+    <!-- Formulario para crear/editar un item -->
+    <form class="mb-4" (ngSubmit)="currentItem._id ? updateItem(currentItem._id, currentItem) : createItem(currentItem)">
+        <div class="form-group">
+            <label for="name" class="font-weight-bold">Name:</label>
+            <input type="text" class="form-control" [(ngModel)]="currentItem.name" name="name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="description" class="font-weight-bold">Description:</label>
+            <input type="text" class="form-control" [(ngModel)]="currentItem.description" name="description" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-2 w-100">{{currentItem._id ? 'Update' : 'Add'}} Item</button>
+    </form>
+
+    <hr>
+
+    <!-- Lista de items -->
+    <table class="table table-striped table-hover rounded shadow-sm">
+        <thead class="thead-dark">
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th class="text-center">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of items">
+                <td>{{ item.name }}</td>
+                <td>{{ item.description }}</td>
+                <td class="text-center">
+                    <button class="btn btn-sm btn-primary mr-2" (click)="editItem(item._id)">Edit</button>
+                    <button class="btn btn-sm btn-danger" (click)="deleteItem(item._id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

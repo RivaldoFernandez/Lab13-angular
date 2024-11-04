@@ -1,0 +1,8 @@
+<div *ngIf="item">
+  <h5>Nombre: {{ item.name }}</h5>
+  <p>Descripción: {{ item.description }}</p>
+  <p>Género: {{ item.genre }}</p>
+  <p>Fecha de Lanzamiento: {{ item.releaseDate | date }}</p>
+  <p>Calificación: {{ item.rating }}</p>
+  <img *ngIf="item.imageUrl" [src]="item.imageUrl" alt="{{ item.name }}" class="img-fluid">
+</div>

@@ -1,0 +1,29 @@
+.input-group {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra para profundidad */
+  border-radius: 0.5rem; /* Bordes redondeados */
+}
+
+.form-control {
+  border: 1px solid #007bff; /* Borde azul */
+  transition: border-color 0.3s; /* Suavizar la transición del color del borde */
+}
+
+.form-control:focus {
+  border-color: #0056b3; /* Color del borde al hacer foco */
+  box-shadow: 0 0 5px rgba(0, 86, 179, 0.5); /* Sombra de foco */
+  outline: none; /* Sin contorno */
+}
+
+.input-group-text {
+  border: 1px solid #007bff; /* Borde azul para el ícono */
+  background-color: #007bff; /* Color de fondo para el ícono */
+  transition: background-color 0.3s; /* Suavizar la transición del color de fondo */
+}
+
+.input-group-text:hover {
+  background-color: #0056b3; /* Color de fondo al pasar el ratón */
+}
+
+.input-group-text i {
+  font-size: 1.2em; /* Aumentar tamaño del ícono */
+}

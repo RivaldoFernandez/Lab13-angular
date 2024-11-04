@@ -1,0 +1,28 @@
+<form (ngSubmit)="onSubmit()" #itemForm="ngForm">
+    <div class="mb-3">
+      <label for="name" class="form-label">Nombre</label>
+      <input type="text" class="form-control" id="name" [(ngModel)]="item.name" name="name" required>
+    </div>
+    <div class="mb-3">
+      <label for="description" class="form-label">Descripción</label>
+      <textarea class="form-control" id="description" [(ngModel)]="item.description" name="description" required></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="genre" class="form-label">Género</label>
+      <input type="text" class="form-control" id="genre" [(ngModel)]="item.genre" name="genre" required>
+    </div>
+    <div class="mb-3">
+      <label for="releaseDate" class="form-label">Fecha de Lanzamiento</label>
+      <input type="date" class="form-control" id="releaseDate" [(ngModel)]="item.releaseDate" name="releaseDate" required>
+    </div>
+    <div class="mb-3">
+      <label for="rating" class="form-label">Calificación</label>
+      <input type="number" class="form-control" id="rating" [(ngModel)]="item.rating" name="rating" required min="0" max="10">
+    </div>
+    <div class="mb-3">
+      <label for="imageUrl" class="form-label">URL de Imagen</label>
+      <input type="text" class="form-control" id="imageUrl" [(ngModel)]="item.imageUrl" name="imageUrl">
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+  </form>
+  

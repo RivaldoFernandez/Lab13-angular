@@ -1,0 +1,21 @@
+<div *ngIf="visible" class="alert" [ngClass]="{
+  'alert-success': type === 'success',
+  'alert-danger': type === 'danger',
+  'alert-warning': type === 'warning',
+  'alert-info': type === 'info'
+}" role="alert" style="border-radius: 0.5rem; position: relative;">
+  
+  <strong *ngIf="type === 'success'">Éxito!</strong>
+  <strong *ngIf="type === 'danger'">Error!</strong>
+  <strong *ngIf="type === 'warning'">Advertencia!</strong>
+  <strong *ngIf="type === 'info'">Información!</strong>
+
+  <span class="d-block">{{ message }}</span>
+
+  <button type="button" class="btn-close" aria-label="Close" (click)="closeAlert()" style="position: absolute; top: 10px; right: 10px;"></button>
+</div>
+
+<!-- Mensaje de no notificaciones -->
+<div *ngIf="!hasNotification && visible" class="alert alert-info" style="border-radius: 0.5rem;">
+  <span class="d-block">Usted aún no tiene notificaciones.</span>
+</div>

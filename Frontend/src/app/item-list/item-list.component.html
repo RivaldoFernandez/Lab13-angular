@@ -1,0 +1,93 @@
+<!-- Tabla de items -->
+<table class="table table-striped table-hover rounded shadow-sm">
+  <thead class="table-primary me-2">
+    <tr>
+      <th>Nombre</th>
+      <th>Descripción</th>
+      <th>Género</th>
+      <th>Fecha de Lanzamiento</th>
+      <th>Calificación</th>
+      <th>Imagen</th>
+      <th class="text-center">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of items">
+      <td>{{ item.name }}</td>
+      <td>{{ item.description }}</td>
+      <td>{{ item.genre }}</td>
+      <td>{{ item.releaseDate | date:'shortDate' }}</td>
+      <td>{{ item.rating }}</td>
+      <td>
+        <img *ngIf="item.imageUrl" [src]="item.imageUrl" alt="{{ item.name }}" class="img-thumbnail" style="max-width: 50px; max-height: 50px;">
+      </td>
+      <td class="text-center">
+        <button class="btn btn-sm btn-info me-2" (click)="viewDetails(item)">Ver</button>
+        <button class="btn btn-sm btn-primary me-2" (click)="editItem(item)">Editar</button>
+        <button class="btn btn-sm btn-danger" (click)="deleteItem(item._id)">Eliminar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Modal para detalles y edición -->
+<div class="modal fade show" tabindex="-1" *ngIf="selectedItem" style="display: block; background: rgba(0, 0, 0, 0.8);">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content border-0 rounded-3" style="background-color: #646492;">
+      <div class="modal-header bg-primary text-white border-bottom-0 position-relative">
+        <h5 class="modal-title">{{ selectedItem.name }} - {{ isEditing ? 'Editar' : 'Detalles' }}</h5>
+        <button type="button" class="btn-close btn-close-white" aria-label="Close" (click)="closeModal()" style="position: absolute; top: 15px; right: 15px;"></button>
+      </div>
+      <div class="modal-body p-4">
+        <form *ngIf="isEditing" (ngSubmit)="onSubmit()" #itemForm="ngForm">
+          <div class="mb-3">
+            <label for="name" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="name" [(ngModel)]="selectedItem.name" name="name" required>
+          </div>
+          <div class="mb-3">
+            <label for="description" class="form-label">Descripción</label>
+            <textarea class="form-control" id="description" [(ngModel)]="selectedItem.description" name="description" required></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="genre" class="form-label">Género</label>
+            <input type="text" class="form-control" id="genre" [(ngModel)]="selectedItem.genre" name="genre" required>
+          </div>
+          <div class="mb-3">
+            <label for="releaseDate" class="form-label">Fecha de Lanzamiento</label>
+            <input type="date" class="form-control" id="releaseDate" [(ngModel)]="selectedItem.releaseDate" name="releaseDate" required>
+          </div>
+          <div class="mb-3">
+            <label for="rating" class="form-label">Calificación</label>
+            <input type="number" class="form-control" id="rating" [(ngModel)]="selectedItem.rating" name="rating" required min="0" max="10">
+          </div>
+          <div class="mb-3">
+            <label for="imageUrl" class="form-label">URL de Imagen</label>
+            <input type="text" class="form-control" id="imageUrl" [(ngModel)]="selectedItem.imageUrl" name="imageUrl">
+          </div>
+          <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+          <button type="button" class="btn btn-secondary" (click)="cancelEdit()">Cancelar</button>
+        </form>
+        <div *ngIf="!isEditing">
+          <div class="row g-4 align-items-center">
+            <div class="col-md-5 text-center">
+              <img *ngIf="selectedItem.imageUrl" [src]="selectedItem.imageUrl" alt="{{ selectedItem.name }}" class="img-fluid rounded shadow mb-3" style="max-width: 100%; border: 2px solid #444;">
+            </div>
+            <div class="col-md-7 text-white">
+              <h6 class="fw-bold text-warning mb-2">Descripción</h6>
+              <p class="text-light">{{ selectedItem.description }}</p>
+              <h6 class="fw-bold text-warning mb-2">Género</h6>
+              <p class="text-light">{{ selectedItem.genre }}</p>
+              <h6 class="fw-bold text-warning mb-2">Fecha de Lanzamiento</h6>
+              <p class="text-light">{{ selectedItem.releaseDate | date: 'longDate' }}</p>
+              <h6 class="fw-bold text-warning mb-2">Calificación</h6>
+              <p class="text-light">{{ selectedItem.rating }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer border-top-0">
+        <button type="button" class="btn btn-outline-warning" (click)="closeModal()">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>

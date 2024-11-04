@@ -1,0 +1,43 @@
+.container {
+    max-width: 600px;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-size: 1.1rem;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border: none;
+}
+
+.table {
+    margin-top: 20px;
+    border: 1px solid #dee2e6;
+}
+
+.table th, .table td {
+    vertical-align: middle;
+}
+
+.thead-dark th {
+    background-color: #343a40;
+    color: white;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+.shadow-sm {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
